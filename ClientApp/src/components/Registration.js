@@ -21,7 +21,6 @@ export class Registration extends Component {
   submitUser = (event) => {
     event.persist();
     event.preventDefault();
-    //Validate if the passwords match.. if they match submit the form
     this.props.postUser(this.state.user);
   }
 

@@ -23,15 +23,6 @@ class App extends Component {
     userPosted: false
   }
 
-  UpdateLoginStatus = (status, isAdmin, user) => {
-    this.setState({
-      ...this.state,
-      loggedIn: status,
-      isAdmin: isAdmin,
-      currentUser: user
-    });
-  }
-
   componentDidMount() {
     this.getCars();
     this.getUsers();
@@ -47,7 +38,7 @@ class App extends Component {
   };
 
   getCars = () => {
-    this.getData(`https://${this.props.connection}/api/cars`)
+    this.getData(`http://${this.props.connection}/cars`)
       .then((data) => {
         this.setState({
           ...this.state,
@@ -58,7 +49,7 @@ class App extends Component {
   }
 
   getUsers = () => {
-    this.getData(`https://${this.props.connection}/api/users`)
+    this.getData(`http://${this.props.connection}/users`)
       .then((data) => {
         this.setState({
           ...this.state,
@@ -81,14 +72,14 @@ class App extends Component {
   };
 
   postCar = (car) => {
-    this.postData(car, `https://${this.props.connection}/api/cars/post`)
+    this.postData(car, `http://${this.props.connection}/cars`)
       .then(() => {
         this.ToggleCarPostedBool();
       })
   };
 
   postUser = (user) => {
-    this.postData(user, `https://${this.props.connection}/api/users/post`)
+    this.postData(user, `http://${this.props.connection}/users`)
       .then(() => {
         this.ToggleUserPostedBool();
       })
@@ -105,6 +96,15 @@ class App extends Component {
     this.setState({
       ...this.state,
       userPosted: !this.state.userPosted,
+    });
+  }
+
+  UpdateLoginStatus = (status, isAdmin, user) => {
+    this.setState({
+      ...this.state,
+      loggedIn: status,
+      isAdmin: isAdmin,
+      currentUser: user
     });
   }
 
