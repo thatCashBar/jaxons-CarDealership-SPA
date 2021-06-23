@@ -29,8 +29,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: 'root'
       MONGO_INITDB_ROOT_PASSWORD: 'example'
     volumes: 
-      - './data:/data/db'
-    restart: 'no'
+      - './mongoDb_data:/data/db'
+    restart: 'always'
 
   mongo-express:
     container_name: 'mongoExpress'

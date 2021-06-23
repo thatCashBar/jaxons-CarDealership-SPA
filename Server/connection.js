@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connection = "mongodb://mongodb:27017/carInventory?authSource=admin";
+const connection = 'mongodb://localhost:27017/carDealership';
 
 const connectDb = () => {
     return mongoose.connect(connection, {
